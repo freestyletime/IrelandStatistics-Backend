@@ -11,14 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("permits-issued-to-companies-2023")
-public class PermitsCompany2023 {
+@Document("permits-issued-to-companies")
+public class PermitsCompany {
     @Id
     private ObjectId id;
-    @Field("Employer Name")
     private String employer;
-    @Field("Count")
-    private int Count;
+    private String year;
+    private int count;
     @Field("Jan")
     private int jan;
     @Field("Feb")
@@ -37,7 +36,10 @@ public class PermitsCompany2023 {
     private int aug;
     @Field("Sep")
     private int sep;
-//    private int oct;
-//    private int nov;
-//    private int dec;
+    @Field("Oct")
+    private int oct;
+    @Field("Nov")
+    private int nov;
+    @Field("Dec")
+    private int dec;
 }
