@@ -1,9 +1,9 @@
-package ie.chrischen.irelandstatistics.service;
+package ie.chrischen.irelandstatistics.service.permit;
 
-import ie.chrischen.irelandstatistics.dto.Mapper;
-import ie.chrischen.irelandstatistics.dto.PermitsCompanyDTO;
-import ie.chrischen.irelandstatistics.model.PermitsCompany;
-import ie.chrischen.irelandstatistics.repository.PermitsCompanyRepository;
+import ie.chrischen.irelandstatistics.dto.permit.Mapper;
+import ie.chrischen.irelandstatistics.dto.permit.PermitsCompanyDTO;
+import ie.chrischen.irelandstatistics.model.permit.PermitsCompany;
+import ie.chrischen.irelandstatistics.repository.permit.PermitsCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +27,8 @@ public class PermitsCompanyService {
 
     public List<PermitsCompanyDTO> findByName(String year, String employer) {
         Optional<List<PermitsCompany>> data = this.permitsCompanyRepository
-                .findByYearEqualsAndEmployerContainingIgnoreCase(year, employer);
-        return data.map(pc -> pc.stream()
-                .map(mapper::toPermitsCompanyDTO).toList()).orElse(null);
+                .findByYearEqualsAndEmployerStartsWith(year, employer);
+        return data.map(pc -> pc.stream().map(mapper::toPermitsCompanyDTO).toList()).orElse(null);
     }
 
     public List<PermitsCompanyDTO> getAll(String year) {

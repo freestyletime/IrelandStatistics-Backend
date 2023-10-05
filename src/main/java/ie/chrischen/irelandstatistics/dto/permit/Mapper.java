@@ -1,6 +1,7 @@
-package ie.chrischen.irelandstatistics.dto;
+package ie.chrischen.irelandstatistics.dto.permit;
 
-import ie.chrischen.irelandstatistics.model.PermitsCompany;
+import ie.chrischen.irelandstatistics.model.permit.PermitsCompany;
+import ie.chrischen.irelandstatistics.model.permit.PermitsNationality;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Component
 public class Mapper {
-    public PermitsCompanyDTO toPermitsCompanyDTO(PermitsCompany pc){
+    public PermitsCompanyDTO toPermitsCompanyDTO(PermitsCompany pc) {
         List<Integer> monthCount = new ArrayList<>();
         PermitsCompanyDTO dto = new PermitsCompanyDTO(pc.getId(), pc.getEmployer(), pc.getYear(), pc.getCount(), monthCount);
         monthCount.add(pc.getJan());
@@ -24,5 +25,9 @@ public class Mapper {
         monthCount.add(pc.getNov());
         monthCount.add(pc.getDec());
         return dto;
+    }
+
+    public PermitsNationalityDTO toPermitsNationalityDTO(PermitsNationality pn) {
+        return new PermitsNationalityDTO(pn.getId(), pn.getNationality(), pn.getYear(), pn.getIssued(), pn.getRefused(), pn.getWithdrawn());
     }
 }

@@ -1,4 +1,4 @@
-package ie.chrischen.irelandstatistics.model;
+package ie.chrischen.irelandstatistics.model.permit;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
