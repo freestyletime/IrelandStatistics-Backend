@@ -1,6 +1,6 @@
 package ie.chrischen.irelandstatistics.controller.permit;
 
-import ie.chrischen.irelandstatistics.dto.permit.PermitsNationalityDTO;
+import ie.chrischen.irelandstatistics.dto.IDTO;
 import ie.chrischen.irelandstatistics.service.permit.PermitsNationalityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,17 +22,17 @@ public class PermitsNationalityController {
     }
 
     @GetMapping("/{year}")
-    public ResponseEntity<List<PermitsNationalityDTO>> getPermitsNationalityByYear(@PathVariable String year) {
+    public ResponseEntity<List<IDTO>> getPermitsNationalityByYear(@PathVariable String year) {
         if(year.isBlank()) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        List<PermitsNationalityDTO> data = permitsNationalityService.getAll(year);
+        List<IDTO> data = permitsNationalityService.getAll(year);
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @GetMapping("/{year}/{nationality}")
-    public ResponseEntity<List<PermitsNationalityDTO>> getPermitsNationalityByEmployer(@PathVariable String year, @PathVariable String nationality) {
+    public ResponseEntity<List<IDTO>> getPermitsNationalityByEmployer(@PathVariable String year, @PathVariable String nationality) {
         if(year.isBlank() || nationality.isBlank()) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        List<PermitsNationalityDTO> data = permitsNationalityService.findByName(year, nationality);
+        List<IDTO> data = permitsNationalityService.findByName(year, nationality);
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
     }
