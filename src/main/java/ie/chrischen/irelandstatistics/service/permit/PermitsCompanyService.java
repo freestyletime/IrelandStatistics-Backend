@@ -1,7 +1,7 @@
 package ie.chrischen.irelandstatistics.service.permit;
 
+import ie.chrischen.irelandstatistics.dto.IDTO;
 import ie.chrischen.irelandstatistics.dto.permit.Mapper;
-import ie.chrischen.irelandstatistics.dto.permit.PermitsCompanyDTO;
 import ie.chrischen.irelandstatistics.model.permit.PermitsCompany;
 import ie.chrischen.irelandstatistics.repository.permit.PermitsCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,11 @@ import java.util.Optional;
 
 @Service
 public class PermitsCompanyService {
-    private Mapper mapper;
+    private Mapper<PermitsCompany> mapper;
     private PermitsCompanyRepository permitsCompanyRepository;
 
     @Autowired
-    public void setMapper(Mapper mapper) {
+    public void setMapper(Mapper<PermitsCompany> mapper) {
         this.mapper = mapper;
     }
 
@@ -25,14 +25,14 @@ public class PermitsCompanyService {
         this.permitsCompanyRepository = permitsCompanyRepository;
     }
 
-    public List<PermitsCompanyDTO> findByName(String year, String employer) {
+    public List<IDTO> findByName(String year, String employer) {
         Optional<List<PermitsCompany>> data = this.permitsCompanyRepository
                 .findByYearEqualsAndEmployerStartsWith(year, employer);
-        return data.map(pc -> pc.stream().map(mapper::toPermitsCompanyDTO).toList()).orElse(null);
+        return data.map(pc -> pc.stream().map(mapper::toDTO).toList()).orElse(null);
     }
 
-    public List<PermitsCompanyDTO> getAll(String year) {
+    public List<IDTO> getAll(String year) {
         Optional<List<PermitsCompany>> data = this.permitsCompanyRepository.findByYear(year);
-        return data.map(pc -> pc.stream().map(mapper::toPermitsCompanyDTO).toList()).orElse(null);
+        return data.map(pc -> pc.stream().map(mapper::toDTO).toList()).orElse(null);
     }
 }

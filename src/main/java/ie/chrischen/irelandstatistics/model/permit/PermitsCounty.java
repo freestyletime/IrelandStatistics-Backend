@@ -11,11 +11,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("permits-by-nationality")
-public class PermitsNationality implements IModel {
+@Document("permits-by-county")
+public class PermitsCounty implements IModel {
     @Id
     private ObjectId id;
-    private String nationality;
+    private String county;
     private String year;
     private int issued;
     private int refused;

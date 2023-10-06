@@ -1,5 +1,6 @@
 package ie.chrischen.irelandstatistics.model.permit;
 
+import ie.chrischen.irelandstatistics.model.IModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document("permits-issued-to-companies")
-public class PermitsCompany {
+public class PermitsCompany implements IModel {
     @Id
     private ObjectId id;
     private String employer;

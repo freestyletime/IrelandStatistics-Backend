@@ -6,15 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PermitsCompanyDTO implements IDTO {
+public class PermitsCountyDTO implements IDTO {
     private ObjectId id;
-    private String employer;
+    private String county;
     private String year;
-    private int count;
-    private List<Integer> monthCount;
+    private int issued;
+    private int refused;
+    private int withdrawn;
 }
