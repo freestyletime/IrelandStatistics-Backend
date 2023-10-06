@@ -4,6 +4,7 @@
 <a href="https://github.com/freestyletime"><img alt="author" src="https://img.shields.io/badge/author-Chris Chen-blue.svg"/></a>
 <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html"><img alt="JDK" src="https://img.shields.io/badge/JDK-17-orange.svg"/></a>
 <a href="https://docs.spring.io/spring-boot/docs/3.1.4.RELEASE/reference/html/"><img alt="Spring Boot" src="https://img.shields.io/badge/Spring Boot-3.1.4.RELEASE-brightgreen.svg"/></a>
+<a href="https://github.com/freestyletime/IrelandStatistics-Backend/blob/main/LICENSE"><img alt="LICENSE" src="https://img.shields.io/github/license/freestyletime/IrelandStatistics-Backend.svg"/></a>
 </p>
 This project is aiming to demonstrate diverse statistics in an organized way in Ireland.
 This repository only involves the back-end code. 
@@ -22,3 +23,15 @@ to illustrate data in magnificent ways to users.
 ## Data Source
 * [Employment Permits](https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/statistics/)
 * Population(under construction)
+
+## Development Environment
+* Java
+* Spring-boot
+* Docker
+* Maven
+* IntelliJ IDEA ULTIMATE 2023.2.1
+
+## License
+
+[Apache-2.0](http://opensource.org/licenses/Apache-2.0)
+

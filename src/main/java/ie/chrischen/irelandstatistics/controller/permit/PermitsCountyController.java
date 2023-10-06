@@ -1,5 +1,6 @@
 package ie.chrischen.irelandstatistics.controller.permit;
 
+import ie.chrischen.irelandstatistics.common.ResponseEntityUtils;
 import ie.chrischen.irelandstatistics.dto.IDTO;
 import ie.chrischen.irelandstatistics.service.permit.PermitsCountyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ public class PermitsCountyController {
 
     @GetMapping("/{year}")
     public ResponseEntity<List<IDTO>> getPermitsCountyByYear(@PathVariable String year) {
-        if(year.isBlank()) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        var res = ResponseEntityUtils.checkEssentialParams(year);
+        if(res != null) return res;
         List<IDTO> data = permitsCountyService.getAll(year);
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
@@ -32,7 +34,8 @@ public class PermitsCountyController {
 
     @GetMapping("/{year}/{county}")
     public ResponseEntity<List<IDTO>> getPermitsCountyByName(@PathVariable String year, @PathVariable String county) {
-        if(year.isBlank() || county.isBlank()) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        var res = ResponseEntityUtils.checkEssentialParams(year, county);
+        if(res != null) return res;
         List<IDTO> data = permitsCountyService.findByName(year, county);
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
