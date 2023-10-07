@@ -33,7 +33,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
     
     - name: Install Maven dependencies
-      run: mvn install
+      run: mvn clean install
     
     - name: Build with Maven
       run: mvn --batch-mode --update-snapshots verify
