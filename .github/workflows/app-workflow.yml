@@ -7,7 +7,7 @@ on:
 
 jobs:
   project-build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout source code
@@ -37,7 +37,7 @@ jobs:
 
   docker-build:
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs:
       - project-build
     steps:
@@ -76,3 +76,13 @@ jobs:
           context: .
           push: true
           tags: chrisloveireland/ireland-statistics:latest
+
+  Orcle-cloud-Deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: self-hosted
+    needs:
+      - docker-build
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
