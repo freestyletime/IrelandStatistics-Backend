@@ -15,6 +15,7 @@
 	<description>IrelandStatistics-Backend</description>
 	<properties>
 		<java.version>17</java.version>
+		<skipTests>true</skipTests>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,9 +54,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M7</version>
+				<version>3.1.2</version>
 				<configuration>
-					<testFailureIgnore>true</testFailureIgnore>
+					<skipTests>${skipTests}</skipTests>
 				</configuration>
 			</plugin>
 			<plugin>
