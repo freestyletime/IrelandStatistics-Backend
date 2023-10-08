@@ -38,10 +38,17 @@ jobs:
   docker-build:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - linux/amd64
+          - linux/arm/v8
+          - linux/arm64
     needs:
       - project-build
     steps:
-      - name: Checkout source code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Set up JDK 17
@@ -74,5 +81,16 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile
+          platforms: ${{ matrix.platform }}
           push: true
-          tags: chrisloveireland/ireland-statistics:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ireland-statistics:latest
+
+  cloud-deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs:
+      - docker-build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
