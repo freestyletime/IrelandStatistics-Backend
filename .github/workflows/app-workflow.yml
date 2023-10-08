@@ -7,7 +7,7 @@ on:
 
 jobs:
   project-build:
-    runs-on: self-hosted
+    runs-on: macos-12
 
     steps:
       - name: Checkout source code
@@ -37,7 +37,7 @@ jobs:
 
   docker-build:
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: self-hosted
+    runs-on: macos-12
     needs:
       - project-build
     steps:
@@ -79,7 +79,7 @@ jobs:
 
   Orcle-cloud-Deploy:
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: self-hosted
+    runs-on: macos-12
     needs:
       - docker-build
     steps:
