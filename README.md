@@ -6,7 +6,7 @@
 <a href="https://docs.spring.io/spring-boot/docs/3.1.4.RELEASE/reference/html/"><img alt="Spring Boot" src="https://img.shields.io/badge/Spring Boot-3.1.4.RELEASE-brightgreen.svg"/></a>
 <a href="https://github.com/freestyletime/IrelandStatistics-Backend/blob/main/LICENSE"><img alt="LICENSE" src="https://img.shields.io/github/license/freestyletime/IrelandStatistics-Backend.svg"/></a>
 </p>
-This project is aiming to demonstrate diverse statistics in an organized way in Ireland.
+This project aims to demonstrate diverse statistics in an organized way in Ireland.
 This repository only involves the back-end code. 
 It adopts Spring-boot as the framework, GitHub Action as CI/CD. 
 Oracle Cloud offers the production environment where
