@@ -1,19 +1,19 @@
 FROM maven:3.8.4-openjdk-17-slim AS build
 
-ARG mongo_database
-ARG mongo_user
-ARG mongo_pswd
-ARG mongo_cluster
-
+#ARG mongo_database
+#ARG mongo_user
+#ARG mongo_pswd
+#ARG mongo_cluster
+#
 #ENV MONGO_DATABASE=$mongo_database \
 #    MONGO_USER=$mongo_user \
 #    MONGO_PSWD=$mongo_pswd \
 #    MONGO_CLUSTER=$mongo_cluster
 
 WORKDIR /project
-COPY . /project
-#RUN /project/setCredentials.sh $mongo_database $mongo_user $mongo_pswd $mongo_cluster src/main/resources/application.properties
+COPY pom.xml .
 RUN mvn dependency:go-offline
+COPY src/ /project/src
 RUN mvn clean package
 
 
