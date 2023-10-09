@@ -95,15 +95,18 @@ jobs:
     needs:
       - docker-build
     steps:
-      - uses: actions/checkout@v3
-      - name: Add Server key
-        run: |
-          touch key.txt && echo "${{ secrets.SSH_KEY }}" > key.txt
-          chmod 600 key.txt
-      - name: Deploy the application
-        env:
-          SERVER_USER: ${{ secrets.SSH_USER }}
-          SERVER_HOST: ${{ secrets.SSH_HOST }}
-        run: |
-          set -e
-          ./deploy2cloud.sh
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Connect with SSH and Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/ireland-statistics:latest
+            sudo docker stop application
+            sudo docker run -d --rm -p 8081:8080 --name application ${{ secrets.DOCKERHUB_USERNAME }}/ireland-statistics:latest --server.port=8080
+            exit
+            

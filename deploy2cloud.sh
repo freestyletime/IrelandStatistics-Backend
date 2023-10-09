@@ -2,7 +2,7 @@
 
 start=$(date +"%s")
 
-ssh ${SSH_USER}@${SSH_HOST} -i key.txt -t -t -o StrictHostKeyChecking=no << 'ENDSSH'
+ssh ${SSH_USER}@${SSH_HOST} -i key.txt
 sudo docker pull ${DOCKERHUB_USERNAME}/ireland-statistics:latest
 
 CONTAINER_NAME=application
