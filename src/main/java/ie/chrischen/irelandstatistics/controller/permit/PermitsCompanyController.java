@@ -39,16 +39,16 @@ public class PermitsCompanyController {
                 : new ResponseEntity<>(data, HttpStatus.OK);
     }
 
-    @GetMapping("/{year}/{employer}")
+    @GetMapping("/{year}/{company}")
     public ResponseEntity<List<IDTO>> getPermitsCompanyByEmployer(@PathVariable String year,
-                                                                  @PathVariable String employer,
+                                                                  @PathVariable String company,
                                                                   @RequestParam(defaultValue= "0", required = false) Integer page ,
                                                                   @RequestParam(defaultValue= "50", required = false) Integer pageSize) {
-        var res = ResponseEntityUtils.checkEssentialParams(year, employer);
+        var res = ResponseEntityUtils.checkEssentialParams(year, company);
         if(res != null) return res;
 
         Pageable paging = PageRequest.of(page, pageSize);
-        List<IDTO> data = permitsCompanyService.findByName(year, employer, paging);
+        List<IDTO> data = permitsCompanyService.findByName(year, company, paging);
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
     }

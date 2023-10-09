@@ -22,6 +22,15 @@ to illustrate data in magnificent ways to users.
 
 ## Data Source
 * [Employment Permits](https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/statistics/)
+  - [x] 2023
+  - [x] 2022
+  - [ ] 2021
+  - [ ] 2020
+  - [ ] 2019
+  - [ ] 2018
+  - [ ] 2017
+  - [ ] 2016
+  - [ ] 2015
 * Population(under construction)
 
 ## Development Environment
@@ -30,6 +39,31 @@ to illustrate data in magnificent ways to users.
 * Docker
 * Maven
 * IntelliJ IDEA ULTIMATE 2023.2.1
+
+## API
+
+### Basic Rules
+* The project contains a united prefix(project name): `/ireland_statistics`
+* Then following by the string(api version): `/api/v1`
+* End with the business type such as: `employment-permit`
+
+#### /employment-permit/company
+| URI                    | Des                                                                                      | Example                                                                      |
+|------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| /{year}                | look up the employment permit data for all the companies in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/company/2023?page=0&pageSize=10 |
+| /{year}/{company} | look up the employment permit data with specific company in the specific year in Ireland | ireland_statistics/api/v1/employment-permit/company/2023/google?page=0&pageSize=10             |
+
+#### /employment-permit/nationality
+| URI   | Des                                                                                      | Example                                                         |
+|-------|------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+|/{year}| look up the employment permit data for all nationalities in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/nationality/2023       |
+|/{year}/{nationality}| look up the employment permit data with specific nationality in the specific year in Ireland | ireland_statistics/api/v1/employment-permit/nationality/2023/Japan |
+
+#### /employment-permit/county
+| URI   | Des                                                                                          | Example                                                         |
+|-------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+|/{year}| look up the employment permit data for all counties in the specific year in Ireland          | /ireland_statistics/api/v1/employment-permit/county/2023        |
+|/{year}/{county}| look up the employment permit data with specific county in the specific year in Ireland | ireland_statistics/api/v1/employment-permit/county/2023/Kildare |
 
 ## License
 
