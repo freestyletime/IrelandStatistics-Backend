@@ -76,6 +76,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
+        env:
+          mongo_database: ${{ secrets.MONGO_DATABASE }}
+          mongo_user: ${{ secrets.MONGO_USER }}
+          mongo_pswd : ${{ secrets.MONGO_PSWD }}
+          mongo_cluster: ${{ secrets.MONGO_CLUSTER }}
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -83,11 +88,6 @@ jobs:
           platforms: ${{ matrix.platform }}
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ireland-statistics:latest
-          secrets: |
-            "mongo_database=${{ secrets.MONGO_DATABASE }}" 
-            "mongo_user=${{ secrets.MONGO_USER }}" 
-            "mongo_pswd=${{ secrets.MONGO_PSWD }}" 
-            "mongo_cluster=${{ secrets.MONGO_CLUSTER }}" 
 
   cloud-deploy:
     if: ${{ github.ref == 'refs/heads/main' }}

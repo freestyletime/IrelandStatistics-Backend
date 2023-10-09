@@ -2,10 +2,17 @@ FROM maven:3.8.4-openjdk-17-slim AS build
 WORKDIR /project
 COPY pom.xml .
 RUN mvn dependency:go-offline
-ENV MONGO_DATABASE=mongo_database \
-    MONGO_USER=mongo_user \
-    MONGO_PSWD=mongo_pswd \
-    MONGO_CLUSTER=mongo_cluster
+
+ARG mongo_database
+ARG mongo_user
+ARG mongo_pswd
+ARG mongo_cluster
+
+ENV MONGO_DATABASE=$mongo_database \
+    MONGO_USER=$mongo_user \
+    MONGO_PSWD=$mongo_pswd \
+    MONGO_CLUSTER=$mongo_cluster
+
 COPY src/ /project/src
 RUN mvn clean package
 
