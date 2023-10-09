@@ -12,7 +12,7 @@ ARG mongo_cluster
 
 WORKDIR /project
 COPY . /project
-RUN /project/setCredentials.sh $mongo_database $mongo_user $mongo_pswd $mongo_cluster src/main/resources/application.properties
+#RUN /project/setCredentials.sh $mongo_database $mongo_user $mongo_pswd $mongo_cluster src/main/resources/application.properties
 RUN mvn dependency:go-offline
 RUN mvn clean package
 
