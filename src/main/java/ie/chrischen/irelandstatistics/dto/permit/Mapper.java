@@ -6,6 +6,7 @@ import ie.chrischen.irelandstatistics.model.IModel;
 import ie.chrischen.irelandstatistics.model.permit.PermitsCompany;
 import ie.chrischen.irelandstatistics.model.permit.PermitsCounty;
 import ie.chrischen.irelandstatistics.model.permit.PermitsNationality;
+import ie.chrischen.irelandstatistics.model.permit.PermitsSector;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -35,7 +36,24 @@ public class Mapper<E extends IModel> implements IMapper<E> {
             return new PermitsNationalityDTO(pn.getId(), pn.getNationality(), pn.getYear(), pn.getIssued(), pn.getRefused(), pn.getWithdrawn());
         } else if(model instanceof PermitsCounty pc) {
             return new PermitsCountyDTO(pc.getId(), pc.getCounty(), pc.getYear(), pc.getIssued(), pc.getRefused(), pc.getWithdrawn());
+        } else if (model instanceof PermitsSector ps) {
+            List<Integer> monthCount = new ArrayList<>();
+            PermitsSectorDTO dto = new PermitsSectorDTO(ps.getId(), ps.getSector(), ps.getYear(), ps.getCount(), monthCount);
+            monthCount.add(ps.getJan());
+            monthCount.add(ps.getFeb());
+            monthCount.add(ps.getMar());
+            monthCount.add(ps.getApr());
+            monthCount.add(ps.getMay());
+            monthCount.add(ps.getJun());
+            monthCount.add(ps.getJul());
+            monthCount.add(ps.getAug());
+            monthCount.add(ps.getSep());
+            monthCount.add(ps.getOct());
+            monthCount.add(ps.getNov());
+            monthCount.add(ps.getDec());
+            return dto;
         }
-        return null;
+
+        throw new RuntimeException("Did not match the pre-defined models, please check the codebase.");
     }
 }

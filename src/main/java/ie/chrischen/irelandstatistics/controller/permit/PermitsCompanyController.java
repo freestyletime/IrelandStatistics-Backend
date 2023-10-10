@@ -40,7 +40,7 @@ public class PermitsCompanyController {
     }
 
     @GetMapping("/{year}/{company}")
-    public ResponseEntity<List<IDTO>> getPermitsCompanyByEmployer(@PathVariable String year,
+    public ResponseEntity<List<IDTO>> getPermitsCompanyByCompanyName(@PathVariable String year,
                                                                   @PathVariable String company,
                                                                   @RequestParam(defaultValue= "0", required = false) Integer page ,
                                                                   @RequestParam(defaultValue= "50", required = false) Integer pageSize) {

@@ -8,14 +8,15 @@
 </p>
 This project aims to demonstrate diverse statistics in an organized way in Ireland.
 This repository only involves the back-end code. 
+
 It adopts Spring-boot as the framework, GitHub Action as CI/CD. 
-Oracle Cloud offers the production environment where
-the whole project is containerized by Docker.
+Oracle Cloud offers the production environment where the whole project is containerized by Docker.
+Finally, take the Nginx as the reverse proxy server, transferring data from port 80 to port 8081.
 
 For the detail of this back-end project, it has three typical layers namely
 Controller, Service, Repository. MongoDB is used for the data storage.
 
-The purpose of its existence is to provide RESTful APIs. 
+The purpose of its existence is to provide RESTful APIs of irish publish statistics. 
 The organized data from those APIs will be better to support many end-clients
 like Android, IOS, Browser, etc. Developers are able to take advantage of them
 to illustrate data in magnificent ways to users.
@@ -48,22 +49,29 @@ to illustrate data in magnificent ways to users.
 * End with the business type such as: `employment-permit`
 
 #### /employment-permit/company
-| URI                    | Des                                                                                      | Example                                                                      |
-|------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| /{year}                | look up the employment permit data for all the companies in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/company/2023?page=0&pageSize=10 |
-| /{year}/{company} | look up the employment permit data with specific company in the specific year in Ireland | ireland_statistics/api/v1/employment-permit/company/2023/google?page=0&pageSize=10             |
+| URI                    | Method | Description                                                                           | Example                                                                             |
+|------------------------|--------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| /{year}                | GET    | the employment permit data for all the companies in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/company/2023?page=0&pageSize=10        |
+| /{year}/{company} | GET    | the employment permit data with specific company in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/company/2023/google?page=0&pageSize=10 |
 
 #### /employment-permit/nationality
-| URI   | Des                                                                                      | Example                                                         |
-|-------|------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-|/{year}| look up the employment permit data for all nationalities in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/nationality/2023       |
-|/{year}/{nationality}| look up the employment permit data with specific nationality in the specific year in Ireland | ireland_statistics/api/v1/employment-permit/nationality/2023/Japan |
+| URI   | Method | Description                                                                                  | Example                                                             |
+|-------|-|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+|/{year}|GET | the employment permit data for all nationalities in the specific year in Ireland     | /ireland_statistics/api/v1/employment-permit/nationality/2023       |
+|/{year}/{nationality}| GET| the employment permit data with specific nationality in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/nationality/2023/Japan |
 
 #### /employment-permit/county
-| URI   | Des                                                                                          | Example                                                         |
-|-------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-|/{year}| look up the employment permit data for all counties in the specific year in Ireland          | /ireland_statistics/api/v1/employment-permit/county/2023        |
-|/{year}/{county}| look up the employment permit data with specific county in the specific year in Ireland | ireland_statistics/api/v1/employment-permit/county/2023/Kildare |
+| URI   | Method | Description                                                                                         | Example                                                          |
+|-------|-|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+|/{year}|GET| the employment permit data for all counties in the specific year in Ireland         | /ireland_statistics/api/v1/employment-permit/county/2023         |
+|/{year}/{county}|GET| the employment permit data with specific county in the specific year in Ireland     | /ireland_statistics/api/v1/employment-permit/county/2023/Kildare |
+
+#### /employment-permit/sector
+| URI              | Method | Description                                                                     | Example                                                    |
+|------------------|-|---------------------------------------------------------------------------------|------------------------------------------------------------|
+| /{year}          |GET| the employment permit data for all sectors in the specific year in Ireland      | /ireland_statistics/api/v1/employment-permit/sector/2023   |
+| /{year}/{sector} |GET| the employment permit data with specific sector in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/sector/2023/A |
+
 
 ## License
 
