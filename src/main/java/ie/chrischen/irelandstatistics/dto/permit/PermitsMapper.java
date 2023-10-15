@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Mapper<E extends IModel> implements IMapper<E> {
+public class PermitsMapper<E extends IModel> implements IMapper<E> {
     @Override
     public IDTO toDTO(E model) {
         if(model instanceof PermitsCompany pc) {

@@ -56,21 +56,21 @@ to illustrate data in magnificent ways to users.
 
 #### /employment-permit/nationality
 | URI   | Method | Description                                                                                  | Example                                                             |
-|-------|-|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-|/{year}|GET | the employment permit data for all nationalities in the specific year in Ireland     | /ireland_statistics/api/v1/employment-permit/nationality/2023       |
-|/{year}/{nationality}| GET| the employment permit data with specific nationality in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/nationality/2023/Japan |
+|-------|--------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+|/{year}| GET    | the employment permit data for all nationalities in the specific year in Ireland     | /ireland_statistics/api/v1/employment-permit/nationality/2023       |
+|/{year}/{nationality}| GET    | the employment permit data with specific nationality in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/nationality/2023/Japan |
 
 #### /employment-permit/county
 | URI   | Method | Description                                                                                         | Example                                                          |
-|-------|-|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|
-|/{year}|GET| the employment permit data for all counties in the specific year in Ireland         | /ireland_statistics/api/v1/employment-permit/county/2023         |
-|/{year}/{county}|GET| the employment permit data with specific county in the specific year in Ireland     | /ireland_statistics/api/v1/employment-permit/county/2023/Kildare |
+|-------|--------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+|/{year}| GET    | the employment permit data for all counties in the specific year in Ireland         | /ireland_statistics/api/v1/employment-permit/county/2023         |
+|/{year}/{county}| GET    | the employment permit data with specific county in the specific year in Ireland     | /ireland_statistics/api/v1/employment-permit/county/2023/Kildare |
 
 #### /employment-permit/sector
 | URI              | Method | Description                                                                     | Example                                                    |
-|------------------|-|---------------------------------------------------------------------------------|------------------------------------------------------------|
-| /{year}          |GET| the employment permit data for all sectors in the specific year in Ireland      | /ireland_statistics/api/v1/employment-permit/sector/2023   |
-| /{year}/{sector} |GET| the employment permit data with specific sector in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/sector/2023/A |
+|------------------|--------|---------------------------------------------------------------------------------|------------------------------------------------------------|
+| /{year}          | GET    | the employment permit data for all sectors in the specific year in Ireland      | /ireland_statistics/api/v1/employment-permit/sector/2023   |
+| /{year}/{sector} | GET    | the employment permit data with specific sector in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/sector/2023/A |
 
 
 ## License
