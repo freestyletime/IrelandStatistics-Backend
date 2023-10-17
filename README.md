@@ -9,12 +9,15 @@
 This project aims to demonstrate diverse statistics in an organized way in Ireland.
 This repository only involves the back-end code. 
 
+
 It adopts Spring-boot as the framework, GitHub Action as CI/CD. 
 Oracle Cloud offers the production environment where the whole project is containerized by Docker.
 Finally, take the Nginx as the reverse proxy server, transferring data from port 80 to port 8081.
 
+
 For the detail of this back-end project, it has three typical layers namely
 Controller, Service, Repository. MongoDB is used for the data storage.
+
 
 The purpose of its existence is to provide RESTful APIs of irish publish statistics. 
 The organized data from those APIs will be better to support many end-clients
@@ -25,7 +28,7 @@ to illustrate data in magnificent ways to users.
 * [Employment Permits](https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/statistics/)
   - [x] 2023
   - [x] 2022
-  - [ ] 2021
+  - [x] 2021
   - [ ] 2020
   - [ ] 2019
   - [ ] 2018
@@ -39,6 +42,7 @@ to illustrate data in magnificent ways to users.
 * Spring-boot
 * Docker
 * Maven
+* Oracle Cloud
 * IntelliJ IDEA ULTIMATE 2023.2.1
 
 ## API
@@ -47,6 +51,7 @@ to illustrate data in magnificent ways to users.
 * The project contains a united prefix(project name): `/ireland_statistics`
 * Then following by the string(api version): `/api/v1`
 * End with the business type such as: `employment-permit`
+* Factual example on Oracle Cloud: [2023 Work Permits for Amazon](http://141.148.240.29/ireland_statistics/api/v1/employment-permit/company/2023/Amazon)
 
 #### /employment-permit/company
 | URI                    | Method | Description                                                                           | Example                                                                             |
