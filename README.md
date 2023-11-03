@@ -29,7 +29,7 @@ to illustrate data in magnificent ways to users.
   - [x] 2023
   - [x] 2022
   - [x] 2021
-  - [ ] 2020
+  - [x] 2020
   - [ ] 2019
   - [ ] 2018
   - [ ] 2017
