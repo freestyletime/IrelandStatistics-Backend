@@ -9,5 +9,3 @@ sed -i -e "s/\${MONGO_DATABASE}/${MONGO_DATABASE}/" $5
 sed -i -e "s/\${MONGO_USER}/${MONGO_USER}/" $5
 sed -i -e "s/\${MONGO_PSWD}/${MONGO_PSWD}/" $5
 sed -i -e "s/\${MONGO_CLUSTER}/${MONGO_CLUSTER}/" $5
-
-echo "Successfully set credentials ${MONGO_DATABASE}"
