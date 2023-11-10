@@ -21,11 +21,6 @@ public class PermitsCompanyController {
         this.permitsCompanyService = permitsCompanyService;
     }
 
-    @GetMapping
-    public ResponseEntity<String> hello() {
-        return new ResponseEntity<>("Hello", HttpStatus.OK);
-    }
-
     @GetMapping("/{year}")
     public ResponseEntity<List<IDTO>> getPermitsCompanyByYear(@PathVariable String year,
                                                               @RequestParam(defaultValue= "0", required = false) Integer page ,
