@@ -1,5 +1,6 @@
 package ie.chrischen.irelandstatistics.service.permit;
 
+import ie.chrischen.irelandstatistics.common.Constants;
 import ie.chrischen.irelandstatistics.dto.IDTO;
 import ie.chrischen.irelandstatistics.dto.permit.PermitsMapper;
 import ie.chrischen.irelandstatistics.model.permit.PermitsSector;
@@ -33,6 +34,6 @@ public class PermitsSectorService {
 
     public List<IDTO> getAll(String year) {
         Optional<List<PermitsSector>> data = this.permitsSectorRepository.findByYear(year);
-        return data.map(pc -> pc.stream().map(permitsMapper::toDTO).toList()).orElse(null);
+        return data.map(pc -> pc.stream().filter(c -> !c.getSector().equals(Constants.Field_GrandTotal)).map(permitsMapper::toDTO).toList()).orElse(null);
     }
 }
