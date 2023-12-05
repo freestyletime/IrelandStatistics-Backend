@@ -31,7 +31,7 @@ public class PermitsNationalityService {
     }
 
     public List<IDTO> getAll(String year) {
-        Optional<List<PermitsNationality>> data = this.permitsNationalityRepository.findByYear(year);
+        Optional<List<PermitsNationality>> data = this.permitsNationalityRepository.findByYearOrderByIssued(year);
         return data.map(pn -> pn.stream().filter(c -> !c.getNationality().equals(Constants.Field_GrandTotal)).map(permitsMapper::toDTO).toList()).orElse(null);
     }
 }

@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface PermitsSectorRepository extends MongoRepository<PermitsSector, ObjectId> {
     Optional<List<PermitsSector>> findByYearEqualsAndSectorStartsWith(String year, String sector);
 
-    Optional<List<PermitsSector>> findByYear(String year);
+    Optional<List<PermitsSector>> findByYearOrderByCount(String year);
 }

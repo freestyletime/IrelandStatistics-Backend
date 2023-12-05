@@ -33,7 +33,7 @@ public class PermitsSectorService {
     }
 
     public List<IDTO> getAll(String year) {
-        Optional<List<PermitsSector>> data = this.permitsSectorRepository.findByYear(year);
+        Optional<List<PermitsSector>> data = this.permitsSectorRepository.findByYearOrderByCount(year);
         return data.map(pc -> pc.stream().filter(c -> !c.getSector().equals(Constants.Field_GrandTotal)).map(permitsMapper::toDTO).toList()).orElse(null);
     }
 }
