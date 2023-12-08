@@ -32,7 +32,7 @@ public class PermitsCountyService {
     }
 
     public List<IDTO> getAll(String year) {
-        Optional<List<PermitsCounty>> data = this.permitsCountyRepository.findByYearOrderByIssued(year);
+        Optional<List<PermitsCounty>> data = this.permitsCountyRepository.findByYearOrderByIssuedDesc(year);
         return data.map(pn -> pn.stream().filter(c -> !c.getCounty().equals(Constants.Field_GrandTotal)).map(permitsMapper::toDTO).toList()).orElse(null);
     }
 }

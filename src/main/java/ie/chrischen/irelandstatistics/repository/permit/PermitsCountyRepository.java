@@ -12,5 +12,5 @@ public interface PermitsCountyRepository extends MongoRepository<PermitsCounty, 
 
     Optional<List<PermitsCounty>> findByYearAndCountyContainingIgnoreCase(String year, String nationality);
 
-    Optional<List<PermitsCounty>> findByYearOrderByIssued(String year);
+    Optional<List<PermitsCounty>> findByYearOrderByIssuedDesc(String year);
 }
