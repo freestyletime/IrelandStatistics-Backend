@@ -10,7 +10,9 @@ import java.util.Optional;
 @Repository
 public interface PermitsCountyRepository extends MongoRepository<PermitsCounty, Object> {
 
-    Optional<List<PermitsCounty>> findByYearAndCountyContainingIgnoreCase(String year, String nationality);
+    Optional<List<PermitsCounty>> findByYearAndCountyContainingIgnoreCase(String year, String county);
 
     Optional<List<PermitsCounty>> findByYearOrderByIssuedDesc(String year);
+
+    Optional<List<PermitsCounty>> findByCountyEqualsIgnoreCase(String county);
 }

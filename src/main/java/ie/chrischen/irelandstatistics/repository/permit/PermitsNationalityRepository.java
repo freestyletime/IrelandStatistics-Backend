@@ -13,4 +13,6 @@ public interface PermitsNationalityRepository extends MongoRepository<PermitsNat
     Optional<List<PermitsNationality>> findByYearAndNationalityStartsWith(String year, String nationality);
 
     Optional<List<PermitsNationality>> findByYearOrderByIssuedDesc(String year);
+
+    Optional<List<PermitsNationality>> findByNationalityEqualsIgnoreCase(String nationality);
 }

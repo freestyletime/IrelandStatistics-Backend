@@ -24,6 +24,13 @@ public class PermitsNationalityService {
         this.permitsNationalityRepository = permitsNationalityRepository;
     }
 
+    public List<IDTO> findByName(String nationality) {
+        Optional<List<PermitsNationality>> data = this.permitsNationalityRepository
+                .findByNationalityEqualsIgnoreCase(nationality);
+        return data.map(pn -> pn.stream().map(permitsMapper::toDTO).toList()).orElse(null);
+    }
+
+
     public List<IDTO> findByName(String year, String nationality) {
         Optional<List<PermitsNationality>> data = this.permitsNationalityRepository
                 .findByYearAndNationalityStartsWith(year, nationality);

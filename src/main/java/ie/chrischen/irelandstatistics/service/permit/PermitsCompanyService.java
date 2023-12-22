@@ -27,6 +27,11 @@ public class PermitsCompanyService {
         this.permitsCompanyRepository = permitsCompanyRepository;
     }
 
+    public List<IDTO> findByName(String employer) {
+        Optional<List<PermitsCompany>> data = this.permitsCompanyRepository.findByEmployerEqualsIgnoreCase(employer);
+        return data.map(pc -> pc.stream().map(permitsMapper::toDTO).toList()).orElse(null);
+    }
+
     public List<IDTO> findByName(String year, String employer, Pageable paging) {
         Optional<List<PermitsCompany>> data = this.permitsCompanyRepository
                 .findByYearEqualsAndEmployerStartsWith(year, employer, paging);

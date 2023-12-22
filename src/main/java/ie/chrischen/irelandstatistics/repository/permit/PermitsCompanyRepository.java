@@ -14,4 +14,6 @@ public interface PermitsCompanyRepository extends MongoRepository<PermitsCompany
     Optional<List<PermitsCompany>> findByYearEqualsAndEmployerStartsWith(String year, String employer, Pageable page);
 
     Optional<List<PermitsCompany>> findByYearOrderByCountDesc(String year, Pageable page);
+
+    Optional<List<PermitsCompany>> findByEmployerEqualsIgnoreCase(String employer);
 }

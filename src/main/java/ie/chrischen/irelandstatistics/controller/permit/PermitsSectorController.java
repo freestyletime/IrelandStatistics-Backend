@@ -19,11 +19,6 @@ public class PermitsSectorController {
         this.permitsSectorService = permitsSectorService;
     }
 
-    @GetMapping
-    public ResponseEntity<String> hello() {
-        return new ResponseEntity<>("Hello", HttpStatus.OK);
-    }
-
     @GetMapping("/{year}")
     public ResponseEntity<List<IDTO>> getPermitsSectorByYear(@PathVariable String year) {
         var res = ResponseEntityUtils.checkEssentialParams(year);
@@ -40,6 +35,16 @@ public class PermitsSectorController {
         if(res != null) return res;
 
         List<IDTO> data = permitsSectorService.findByName(year, sector);
+        return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
+                : new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
+    @GetMapping("/all/{sector}")
+    public ResponseEntity<List<IDTO>> getPermitsSectorBySectorName(@PathVariable String sector) {
+        var res = ResponseEntityUtils.checkEssentialParams(sector);
+        if(res != null) return res;
+
+        List<IDTO> data = permitsSectorService.findByName(sector);
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
     }

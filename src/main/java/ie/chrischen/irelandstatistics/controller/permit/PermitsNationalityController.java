@@ -39,4 +39,13 @@ public class PermitsNationalityController {
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
     }
+
+    @GetMapping("/all/{nationality}")
+    public ResponseEntity<List<IDTO>> getPermitsNationalityByEmployer( @PathVariable String nationality) {
+        var res = ResponseEntityUtils.checkEssentialParams(nationality);
+        if(res != null) return res;
+        List<IDTO> data = permitsNationalityService.findByName(nationality);
+        return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
+                : new ResponseEntity<>(data, HttpStatus.OK);
+    }
 }

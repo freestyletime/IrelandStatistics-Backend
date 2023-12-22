@@ -40,4 +40,13 @@ public class PermitsCountyController {
         return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(data, HttpStatus.OK);
     }
+
+    @GetMapping("/all/{county}")
+    public ResponseEntity<List<IDTO>> getPermitsCountyByName(@PathVariable String county) {
+        var res = ResponseEntityUtils.checkEssentialParams(county);
+        if(res != null) return res;
+        List<IDTO> data = permitsCountyService.findByName(county);
+        return data == null || data.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
+                : new ResponseEntity<>(data, HttpStatus.OK);
+    }
 }

@@ -15,6 +15,7 @@ import java.util.Optional;
 public class PermitsCountyService {
     private PermitsMapper<PermitsCounty> permitsMapper;
     private PermitsCountyRepository permitsCountyRepository;
+
     @Autowired
     public void setMapper(PermitsMapper<PermitsCounty> permitsMapper) {
         this.permitsMapper = permitsMapper;
@@ -23,6 +24,11 @@ public class PermitsCountyService {
     @Autowired
     public void setPermitsCountyRepository(PermitsCountyRepository permitsCountyRepository) {
         this.permitsCountyRepository = permitsCountyRepository;
+    }
+
+    public List<IDTO> findByName(String county) {
+        Optional<List<PermitsCounty>> data = this.permitsCountyRepository.findByCountyEqualsIgnoreCase(county);
+        return data.map(pc -> pc.stream().map(permitsMapper::toDTO).toList()).orElse(null);
     }
 
     public List<IDTO> findByName(String year, String county) {

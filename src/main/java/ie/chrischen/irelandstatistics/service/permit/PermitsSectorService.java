@@ -26,6 +26,12 @@ public class PermitsSectorService {
         this.permitsSectorRepository = permitsSectorRepository;
     }
 
+    public List<IDTO> findByName(String sector) {
+        Optional<List<PermitsSector>> data = this.permitsSectorRepository
+                .findBySectorEqualsIgnoreCase(sector);
+        return data.map(pc -> pc.stream().map(permitsMapper::toDTO).toList()).orElse(null);
+    }
+
     public List<IDTO> findByName(String year, String sector) {
         Optional<List<PermitsSector>> data = this.permitsSectorRepository
                 .findByYearEqualsAndSectorStartsWith(year, sector);

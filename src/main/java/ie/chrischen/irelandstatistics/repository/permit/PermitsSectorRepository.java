@@ -13,4 +13,6 @@ public interface PermitsSectorRepository extends MongoRepository<PermitsSector, 
     Optional<List<PermitsSector>> findByYearEqualsAndSectorStartsWith(String year, String sector);
 
     Optional<List<PermitsSector>> findByYearOrderByCountDesc(String year);
+
+    Optional<List<PermitsSector>> findBySectorEqualsIgnoreCase(String sector);
 }
