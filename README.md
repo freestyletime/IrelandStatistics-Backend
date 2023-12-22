@@ -70,11 +70,11 @@ to illustrate data in magnificent ways to users.
 | /all/{county}  | GET    | the employment permit data with specific county in Ireland     | /ireland_statistics/api/v1/employment-permit/county/all/Kildare  |
 
 #### /employment-permit/sector
-| URI            | Method | Description                                                                     | Example                                                    |
-|----------------|--------|---------------------------------------------------------------------------------|------------------------------------------------------------|
-| /{year}        | GET    | the employment permit data for all sectors in the specific year in Ireland      | /ireland_statistics/api/v1/employment-permit/sector/2023   |
+| URI            | Method | Description                                                                    | Example                                                    |
+|----------------|--------|--------------------------------------------------------------------------------|------------------------------------------------------------|
+| /{year}        | GET    | the employment permit data for all sectors in the specific year in Ireland     | /ireland_statistics/api/v1/employment-permit/sector/2023   |
 | /{year}/{sector} | GET    | the employment permit data with specific sector in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/sector/2023/A |
-| /all/{sector}  | GET    | the employment permit data with specific sector in the specific year in Ireland | /ireland_statistics/api/v1/employment-permit/sector/all/J%20-%20Information%20&%20Communication%20Activities |
+| /all/{sector}  | GET    | the employment permit data with specific sector in Ireland | /ireland_statistics/api/v1/employment-permit/sector/all/H%20-%20Transport%20&%20Storage |
 
 ## License
 

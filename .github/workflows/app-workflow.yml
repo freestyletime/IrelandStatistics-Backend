@@ -2,8 +2,12 @@ name: IrelandStatistics application workflow
 on:
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - 'README.md'
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   project-build:
